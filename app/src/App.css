@@ -42,6 +42,72 @@
   padding-top: 40px;
   padding-bottom: 30px;
 }
+.sheet-header.transport{
+  padding-top: 55px;
+}
+.sheet-header.transport a{
+  margin-top: -2em;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  margin-left: 24px;
+}
+.sheet-header.transport a img{
+  margin: 0;
+  margin-right: 5px;
+  width: 10px;
+}
+.sheet-header.transport h1{
+  font-size: 24px;
+  color: #000000;
+  margin: 0;
+  text-align: left;
+  margin-left: 24px;
+  margin-top: 12px;
+  display: inline-block;
+}
+.sheet-header.transport h1.status{
+  display: inline-block;
+  padding: 5px 30px;
+  border-radius: 8px;
+  background: #E53030;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 45px;
+}
+.sheet-header.transport p{
+  margin: 0;
+  font-size: 12px;
+  color: #D6263C;
+  max-width:235px;
+  margin-left: 24px;
+  margin-top: 12px;
+  display: block;
+  text-align: left;
+}
+.sheet-header.transport .stat{
+  align-self: end;
+  font-size: 12px;
+  line-height: 130%;
+  color: #000000;
+  display: flex;
+  margin-left: auto;
+  margin-right: 24px;
+}
+.sheet-header.transport img{
+  width: 100%;
+  margin-top: 12px;
+}
+.sheet-header.transport .stat a{
+  margin: 0;
+  font-size: 12px;
+  line-height: 130%;
+  color: #69A3F4;
+  margin: 0 4px;
+  text-decoration: underline;
+}
 .sheet-header h1{
   font-size: 1.5em;
   font-weight: bold;
@@ -78,6 +144,10 @@
   box-shadow: 0px 4px 29px rgba(0, 0, 0, 0.25);
   background: #fff;
   transform: translateY(0);
+}
+.station-page{
+  height: 100%;
+  overflow-y: scroll;
 }
 .station-page ul{
   list-style: none;

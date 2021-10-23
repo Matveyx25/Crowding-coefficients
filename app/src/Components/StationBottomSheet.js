@@ -10,6 +10,8 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import StationPage from './StationPage';
+import TransportPage from './Transport';
+import { data } from '../store';
 
 const drawerBleeding = 56;
 
@@ -33,10 +35,7 @@ const Root = styled('div')(({ theme }) => ({
   }));
 
   
-
-const BottomSheet = (props) => {
-    let Page = {}
-
+const StationBottomSheet = (props) => {
     const { window } = props;
     const [open, setOpen] = React.useState(false);
 
@@ -44,14 +43,6 @@ const BottomSheet = (props) => {
         setOpen(newOpen);
     };
     const container = window !== undefined ? () => window().document.body : undefined;
-
-    switch(props.type){
-        case 'station':
-            Page = <StationPage data={props.data}/>
-            break
-        default:
-            break
-    }
 
     return (
         <Root>
@@ -65,7 +56,9 @@ const BottomSheet = (props) => {
                     <Global
                         styles={{
                         '.MuiDrawer-root > .MuiPaper-root': {
-                            height: `calc(50% - ${drawerBleeding}px)`,
+                            minHeight: `50%`,
+                            maxHeight: `60%`,
+                            height: 'fit-content',
                             overflow: 'visible',
                         },
                         }}
@@ -104,15 +97,15 @@ const BottomSheet = (props) => {
                         </div>
                         </StyledBox>
                         <StyledBox>
-                            {Page}
+                            <StationPage data={props.data}/>
                         </StyledBox>
                     </SwipeableDrawer>
             </div>
         </Root>
     )
 }
-BottomSheet.propTypes = {
+StationBottomSheet.propTypes = {
   window: PropTypes.func,
 };
 
-export default BottomSheet;
+export default StationBottomSheet;
