@@ -2,16 +2,12 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import { Global } from '@emotion/react';
 import { styled } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { grey } from '@mui/material/colors';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import StationPage from './StationPage';
 import TransportPage from './Transport';
-import { data } from '../store';
 
 const drawerBleeding = 56;
 
@@ -34,6 +30,13 @@ const Root = styled('div')(({ theme }) => ({
     left: 'calc(50% - 30px)',
   }));
 
+const Page = (props) => {
+    if(props.type == 'station'){
+        return <StationPage/>
+    }else if(props.type == 'transport'){
+        return <TransportPage/>
+    }
+}
   
 const StationBottomSheet = (props) => {
     const { window } = props;
@@ -56,7 +59,7 @@ const StationBottomSheet = (props) => {
                     <Global
                         styles={{
                         '.MuiDrawer-root > .MuiPaper-root': {
-                            minHeight: `50%`,
+                            minHeight: `40%`,
                             maxHeight: `60%`,
                             height: 'fit-content',
                             overflow: 'visible',
@@ -77,28 +80,7 @@ const StationBottomSheet = (props) => {
                         }}
                         className="root-wrapper"
                     >
-                        <StyledBox
-                        className="sheet-absolute"
-                        sx={{
-                            position: 'absolute',
-                            top: -40,
-                            borderTopLeftRadius: 20,
-                            borderTopRightRadius: 20,
-                            visibility: 'visible',
-                            right: 0,
-                            left: 0,
-                            height: 'fit-content'
-                        }}
-                        >
-                        <Puller />
-                        <div className="sheet-header">
-                            <h1>Новоданиловский пр. - Академия Транспорта</h1>
-                            <p><img src="./live-icon.svg"/>Данные в реальном времени</p>
-                        </div>
-                        </StyledBox>
-                        <StyledBox>
-                            <StationPage data={props.data}/>
-                        </StyledBox>
+                        <Page type={props.type}/>
                     </SwipeableDrawer>
             </div>
         </Root>

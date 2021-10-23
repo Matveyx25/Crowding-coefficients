@@ -132,22 +132,26 @@
   background: none !important;
 }
 .root-wrapper .sheet-absolute{
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(30px);
-  transform: translateY(calc(-100% + 39px));
+  box-shadow: 0px -20px 20px rgba(0, 0, 0, 0.15);
+  background: #fff;
   transition: background 0.5s;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  transform: translateY(calc(-100% + 40px));
 }
 .root-wrapper .MuiPaper-elevation{
-  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  z-index: 100;
 }
 .root-wrapper[aria-hidden="true"] .sheet-absolute{
-  box-shadow: 0px 4px 29px rgba(0, 0, 0, 0.25);
-  background: #fff;
   transform: translateY(0);
 }
 .station-page{
   height: 100%;
   overflow-y: scroll;
+}
+.station-page *{
+  display: block;
+  text-decoration: none;
 }
 .station-page ul{
   list-style: none;
@@ -192,15 +196,7 @@
   font-weight: 500;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.5);
-}
-.station-page li .name-ts.bus::before{
-  content: 'Автобус ';
-}
-.station-page li .name-ts.trolleybus::before{
-  content: 'Тролейбус ';
-}
-.station-page li .name-ts.tramway::before{
-  content: 'Трамвай ';
+  white-space: nowrap;
 }
 .station-page li .flex{
   display: flex;
@@ -214,11 +210,14 @@
   margin-top: 8px;
   margin-bottom: 8px;
 }
-.station-page li .time-ts span{
+.station-page li .time-ts::after{
+  content: 'min';
+}
+/* .station-page li .time-ts span{
   font-size: 8px;
   color: rgba(0, 0, 0, 0.25);
   margin-right: 4px;
-}
+} */
 .station-page li .occupancy-ts{
   font-size: 16px;
   line-height: 19px;
@@ -227,19 +226,24 @@
 .station-page li .occupancy-ts span{
   padding: 3px 8px;
   border-radius: 3px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
-  color: #FFFEFF;
 }
 .station-page li .occupancy-ts.high span{
-  background: #D6263C;
+  background: rgba(207, 0, 26, 0.12);
+  color: #D6263C;
 }
 .station-page li .occupancy-ts.low span{
-  background: #67C259;
+  background: rgba(103, 194, 89, 0.12);
+  color: #67C259;
+}
+.station-page li .occupancy-ts.average span{
+  background: rgba(255, 212, 0, 0.12);
+  color: #FFD400;
 }
 .w-100{
   width: 100%;
 }
-.station-page li:not(:first-child){
+.station-page ul a:not(:first-child){
   border-top: 1px solid rgba(0, 0, 0, 0.25);
 }
